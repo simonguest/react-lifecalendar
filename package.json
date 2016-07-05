@@ -1,0 +1,42 @@
+{
+  "name": "react-lifecalendar",
+  "version": "1.0.0",
+  "description": "A React/SVG-based Life Calendar component, inspired by [this article](http://waitbutwhy.com/2014/05/life-weeks.html) written by Tim Urban.",
+  "main": "index.js",
+  "scripts": {
+    "start" : "node example/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simonguest/react-lifecalendar.git"
+  },
+  "keywords": [
+    "life",
+    "calendar",
+    "react",
+    "svg",
+    "lifecalendar"
+  ],
+  "author": "Simon Guest",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/simonguest/react-lifecalendar/issues"
+  },
+  "homepage": "https://github.com/simonguest/react-lifecalendar#readme",
+  "dependencies": {
+    "moment": "^2.14.1",
+    "react": "^15.2.0",
+    "react-dom": "^15.2.0"
+  },
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^5.6.18",
+    "babel-loader": "^5.1.4",
+    "babel-plugin-react-transform": "^1.1.0",
+    "express": "^4.13.3",
+    "react-transform-hmr": "^1.0.0",
+    "webpack": "^1.9.11",
+    "webpack-dev-middleware": "^1.2.0",
+    "webpack-hot-middleware": "^2.2.0"
+  }
+}
