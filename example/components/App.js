@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import LifeCalendar from '../../index'
+import LifeCalendar from '../../src/index'
 
 class App extends Component {
 
