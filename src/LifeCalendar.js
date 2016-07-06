@@ -51,8 +51,8 @@ class LifeCalendar extends Component {
       start: currentOffset.start, end: currentOffset.end, title: 'Current Week!', color: 'darkblue'
     });
 
-    var svgWidth = width || 500;
-    var svgHeight = height || 1000;
+    var svgWidth = parseInt(width) || 500;
+    var svgHeight = parseInt(height) || 1000;
     var margin = 30;
 
 
