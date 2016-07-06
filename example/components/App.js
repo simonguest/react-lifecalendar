@@ -8,7 +8,7 @@ class App extends Component {
       dob: '01/01/1978',
       lifeExpectancy: 78.74,
       ranges: [
-        {start: '01/01/1978', end: '09/01/1993', title: 'Junior School', color: 'papayawhip'},
+        {start: '01/01/1978', end: '09/01/1985', title: 'Childhood', color: 'papayawhip'},
         {start: '09/01/1985', end: '09/01/1990', title: 'Elementary School', color: 'silver'},
         {start: '09/01/1990', end: '09/01/1993', title: 'Junior School', color: 'aqua'},
         {start: '09/01/1993', end: '09/01/1996', title: 'High School', color: 'brown'},

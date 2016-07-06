@@ -1,6 +1,6 @@
 {
   "name": "react-lifecalendar",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A React/SVG-based Life Calendar component, inspired by [this article](http://waitbutwhy.com/2014/05/life-weeks.html) written by Tim Urban.",
   "main": "lib/index.js",
   "scripts": {
