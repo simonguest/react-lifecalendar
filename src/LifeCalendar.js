@@ -22,34 +22,23 @@ class LifeCalendar extends Component {
       return (<p>Error rendering calendar - please check console</p>);
     }
 
-    var count = data.lifeExpectancy * 52;
     var dateFormat = data.dateFormat || 'MM/DD/YYYY';
+    var cells = new Array(Math.ceil(data.lifeExpectancy * 52));
 
-    var ranges = data.ranges.map((range) => {
+    data.ranges.map((range) => {
       var offset = this.getWeekRange(moment(data.dob, dateFormat), moment(range.start, dateFormat), moment(range.end || moment().format(dateFormat), dateFormat));
-      return {
-        start: offset.start,
-        end: offset.end,
-        title: range.title,
-        color: range.color || 'black'
+      for (var f = offset.start; f <= offset.end; f++) {
+        cells[f] = {title: range.title, color: range.color};
       }
     });
 
-    var milestones = data.milestones.map((milestone) => {
+    data.milestones.map((milestone) => {
       var offset = this.getWeekRange(moment(data.dob, dateFormat), moment(milestone.date, dateFormat), moment(milestone.date, dateFormat));
-      return {
-        start: offset.start,
-        end: offset.end,
-        title: milestone.title,
-        color: milestone.color || (data.milestoneColor || 'black')
-      }
+      cells[offset.start] = {title: milestone.title, color: milestone.color || 'black'};
     });
-    ranges = ranges.concat(milestones);
-    
+
     var currentOffset = this.getWeekRange(moment(data.dob, dateFormat), moment(), moment());
-    ranges.push({
-      start: currentOffset.start, end: currentOffset.end, title: 'Current Week!', color: 'darkblue'
-    });
+    cells[currentOffset.start] = {title:'Current Week!', color: 'darkblue'};
 
     var svgWidth = parseInt(width) || 500;
     var svgHeight = parseInt(height) || 1000;
@@ -62,13 +51,13 @@ class LifeCalendar extends Component {
           <LifeTitle width={svgWidth - margin} title={title || 'Life Calendar'}/>
         </svg>
         <svg x="0" y={margin + 10}>
-          <LifeYAxis count={count}/>
+          <LifeYAxis count={cells.length}/>
         </svg>
         <svg x={margin} y={25} width={svgWidth - margin}>
           <LifeXAxis/>
         </svg>
         <svg x={margin} y={margin + 10} width={svgWidth - margin}>
-          <LifeMatrix count={count} ranges={ranges}/>
+          <LifeMatrix cells={cells}/>
         </svg>
       </svg>
     )

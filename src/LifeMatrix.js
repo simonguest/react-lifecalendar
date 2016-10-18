@@ -1,38 +1,26 @@
 import React, {Component, PropTypes} from 'react'
 
-import LifeCell from './LifeCell'
-
 class LifeMatrix extends Component {
   render() {
-    const {count, ranges} = this.props;
-    
-    const rowCount = Math.floor(count / 52);
-
-    var getCellDetails = (index) => {
-      var color;
-      var title = '';
-      ranges.map((range) => {
-        if (index >= Math.floor(range.start) && index <= Math.ceil(range.end)) {
-          color = range.color;
-          title = range.title;
-        }
-      });
-      return { color: color, title: title };
-    };
+    const {cells} = this.props;
+    const rowCount = Math.floor(cells.length / 52);
+    const width = 100 / 52;
+    const height = 1;
 
     var createRow = (length, row) => {
       return Array.apply(null, {length: length}).map(Number.call, Number).map((n) => {
         var cellIndex = (row * 52) + n;
-        var details = getCellDetails(cellIndex);
-        return (<LifeCell key={cellIndex} x={(n * 100/52) + '%'} y={row + '%'} color={details.color} title={details.title}/>);
+        return (<g key={cellIndex}>
+          <title>{cells[cellIndex] ? cells[cellIndex].title : ''}</title>
+          <rect x={(n * 100 / 52) + '%'} y={row + '%'} width={width + '%'} height={height + '%'} stroke={'rgb(255,255,255)'} fill={cells[cellIndex] ? cells[cellIndex].color : '#eeeeee'}/>
+        </g>);
       });
     };
 
     const rows = Array.apply(null, {length: rowCount}).map(Number.call, Number).map((row) => {
       return createRow(52, row);
     });
-
-    const finalRow = createRow(count % 52, rowCount);
+    const finalRow = createRow(cells.length % 52, rowCount);
 
     return (
       <g>

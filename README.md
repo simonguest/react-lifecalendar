@@ -26,8 +26,6 @@ npm start
 
 With the server up and running, browse to http://localhost:8000 to view the component with sample data (available in ./example/components/App.js). Hover over the elements to display a tooltip corresponding with the data.
 
-This example is also compatible with the Webpack Hot Reloader (HMR), invoked by webpack-dev-server example/.
-
 ## Installation
 
 To use the component in your own React-based project:
