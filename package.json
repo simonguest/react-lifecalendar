@@ -6,6 +6,7 @@
   "scripts": {
     "build": "babel src --out-dir lib",
     "start": "node example/main.js",
+    "dist": "webpack --config=webpack.dist.config.js",
     "webpack-dev-server": "webpack-dev-server example/."
   },
   "repository": {
