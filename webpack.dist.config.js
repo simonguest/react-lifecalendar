@@ -17,6 +17,10 @@ module.exports = {
   module: {
     loaders: [
       {
+        test: /LifeCalendar\.js/,
+        loader: "expose?LifeCalendar"
+      },
+      {
         test: /\.js$/,
         loaders: ['babel'],
         exclude: /node_modules/,

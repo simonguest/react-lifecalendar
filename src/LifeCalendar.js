@@ -65,3 +65,4 @@ class LifeCalendar extends Component {
 }
 
 export default LifeCalendar;
+module.exports = LifeCalendar;
