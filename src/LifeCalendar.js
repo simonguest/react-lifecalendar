@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react'
+import ReactTooltip from 'react-tooltip'
 import moment from 'moment'
 
 import LifeMatrix from './LifeMatrix'
@@ -38,7 +39,7 @@ class LifeCalendar extends Component {
     });
 
     var currentOffset = this.getWeekRange(moment(data.dob, dateFormat), moment(), moment());
-    cells[currentOffset.start] = {title:'Current Week!', color: 'darkblue'};
+    cells[currentOffset.start] = {title: 'Current Week!', color: 'darkblue'};
 
     var svgWidth = parseInt(width) || 500;
     var svgHeight = parseInt(height) || 1000;
@@ -46,20 +47,23 @@ class LifeCalendar extends Component {
 
 
     return (
-      <svg height={svgHeight} width={svgWidth + margin}>
-        <svg x={margin} y="0" width={svgWidth - margin}>
-          <LifeTitle width={svgWidth - margin} title={title || 'Life Calendar'}/>
+      <div>
+        <svg height={svgHeight} width={svgWidth + margin}>
+          <svg x={margin} y="0" width={svgWidth - margin}>
+            <LifeTitle width={svgWidth - margin} title={title || 'Life Calendar'}/>
+          </svg>
+          <svg x="0" y={margin + 10}>
+            <LifeYAxis count={cells.length}/>
+          </svg>
+          <svg x={margin} y={25} width={svgWidth - margin}>
+            <LifeXAxis/>
+          </svg>
+          <svg x={margin} y={margin + 10} width={svgWidth - margin}>
+            <LifeMatrix cells={cells}/>
+          </svg>
         </svg>
-        <svg x="0" y={margin + 10}>
-          <LifeYAxis count={cells.length}/>
-        </svg>
-        <svg x={margin} y={25} width={svgWidth - margin}>
-          <LifeXAxis/>
-        </svg>
-        <svg x={margin} y={margin + 10} width={svgWidth - margin}>
-          <LifeMatrix cells={cells}/>
-        </svg>
-      </svg>
+        <ReactTooltip/>
+      </div>
     )
   }
 }

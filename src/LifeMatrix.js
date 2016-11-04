@@ -11,8 +11,7 @@ class LifeMatrix extends Component {
       return Array.apply(null, {length: length}).map(Number.call, Number).map((n) => {
         var cellIndex = (row * 52) + n;
         return (<g key={cellIndex}>
-          <title>{cells[cellIndex] ? cells[cellIndex].title : ''}</title>
-          <rect x={(n * 100 / 52) + '%'} y={row + '%'} width={width + '%'} height={height + '%'} stroke={'rgb(255,255,255)'} fill={cells[cellIndex] ? cells[cellIndex].color : '#eeeeee'}/>
+          <rect x={(n * 100 / 52) + '%'} y={row + '%'} width={width + '%'} height={height + '%'} stroke={'rgb(255,255,255)'} fill={cells[cellIndex] ? cells[cellIndex].color : '#eeeeee'} data-tip={cells[cellIndex] ? cells[cellIndex].title : ''}/>
         </g>);
       });
     };
