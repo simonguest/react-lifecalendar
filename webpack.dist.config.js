@@ -1,8 +1,9 @@
 var path = require('path');
 var webpack = require('webpack');
+var Visualizer = require('webpack-visualizer-plugin');
 
 module.exports = {
-  devtool: '#cheap-module-eval-source-map',
+  devtool: '#cheap-module-source-map',
   entry: [
     './src/index'
   ],
@@ -13,7 +14,15 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js'
   },
-  plugins: [],
+  plugins: [
+    new Visualizer(),
+    new webpack.ContextReplacementPlugin(/moment[\\\/]locale$/, /^\.\/(en)$/),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    })
+  ],
   module: {
     loaders: [
       {

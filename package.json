@@ -41,6 +41,7 @@
     "babel-preset-react": "^6.11.1",
     "express": "^4.13.3",
     "webpack": "^1.9.11",
-    "webpack-dev-middleware": "^1.2.0"
+    "webpack-dev-middleware": "^1.2.0",
+    "webpack-visualizer-plugin": "^0.1.5"
   }
 }
